@@ -1,10 +1,16 @@
-// Class declaration
 export default class Cart {
   items = [];
 
-  getTotal() {}
+  getTotal() {
+    return this.items.reduce(
+      (acc, item) => acc + item.product.price * item.quantity,
+      0,
+    );
+  }
 
-  add(item) {}
+  add(item) {
+    this.items.push(item);
+  }
 
   remove(product) {}
 
@@ -12,22 +18,3 @@ export default class Cart {
 
   checkout() {}
 }
-
-// Use
-const cart = new Cart();
-
-const product = {
-  title: '',
-  price: '',
-};
-
-const item = {
-  quantity: 2,
-  product,
-};
-
-cart.add(item);
-cart.remove(product);
-cart.getTotal();
-cart.summary();
-cart.checkout();
